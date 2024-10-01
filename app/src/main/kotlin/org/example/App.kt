@@ -31,4 +31,24 @@ fun main() {
 		val result = sum(ints)
 		println("sum result : " + result)
     println(App().greeting)
+		println(my_sum(1, 2))
+		twoAndThree(my_sum)
+		twoAndThree({a, b -> a * b})
+		println("ab1c".filter { it in 'a'..'z' })
+		println("ab1c".myFilter { it in 'a'..'z' })
+		// return function
+
+		val contacts = listOf(Person("Dmitry", "Jeremy", "123-4567"), Person("Jane", "ben", null), Person("Dmcall", "lim", "111-2222"))
+		val contactListFilters = ContactListFilters()
+		with(contactListFilters) {
+				prefix = "Dm"
+				onlyWithPhoneNumber = true
+		}
+		println(contacts.filter(contactListFilters.getPredicate()))
+		// remove duplication with lambda
+		println("average window duration : " + averageWindowsDuration)
+		println("average mac duration : " + averageMacDuration)
+		println("average mac duration : " + log.averageDurationFor(OS.MAC))
+		println("average duration : " + log.averageDuration({it.os in listOf(OS.MAC, OS.WINDOWS)}))
+		println("average duration : " + log.averageDuration({it.path == "/login"}))
 }

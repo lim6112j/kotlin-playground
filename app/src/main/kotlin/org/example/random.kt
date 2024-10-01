@@ -1,3 +1,4 @@
+package org.example
 interface RNG {
 		fun nextInt(): Pair<Int, RNG>
 }
