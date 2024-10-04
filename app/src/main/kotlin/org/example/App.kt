@@ -3,6 +3,8 @@
  */
 package org.example
 
+import java.time.LocalDate
+
 class App {
     val greeting: String
         get() {
@@ -51,4 +53,23 @@ fun main() {
 		println("average mac duration : " + log.averageDurationFor(OS.MAC))
 		println("average duration : " + log.averageDuration({it.os in listOf(OS.MAC, OS.WINDOWS)}))
 		println("average duration : " + log.averageDuration({it.path == "/login"}))
+		val p1 = Point(1,2)
+		val p2 = Point(2,3)
+		println(p1 + p2)
+		println(p1 * 1.5)
+		println(1.5 * p1)
+		println('a' * 3)
+		println(p1[1])
+		println(p1[0])
+	//	println(p1[2])  // exception
+		val mutableP = MutablePoint(1,2)
+		mutableP[1] = 10
+		println(mutableP)
+		val rec = Rectangle(Point(0, 3), Point(3, 0))
+		println(Point(1,1) in rec)
+		val newYear = LocalDate.ofYearDay(2024,10)
+		val daysOff = newYear.minusDays(1)..newYear
+		for(dayOff in daysOff) {println(dayOff)}
+		runCoroutine()
+		runJob()
 }
