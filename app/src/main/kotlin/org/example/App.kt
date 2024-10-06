@@ -72,4 +72,6 @@ fun main() {
 		for(dayOff in daysOff) {println(dayOff)}
 		runCoroutine()
 		runJob()
+		testSuspendFunction()
+		testSuspendFunction2()
 }
