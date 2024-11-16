@@ -29,6 +29,19 @@ fun sum(xs: List<Int>): Int =
 				is Nil -> 0
 				is Cons -> xs.head + sum(xs.tail)
 		}
+class CountingSet<T>(
+		val innerSet: MutableCollection<T> = HashSet<T>()
+) : MutableCollection<T> by innerSet {
+		var objectAdded = 0
+		override fun add(element: T): Boolean {
+				objectAdded++
+				return innerSet.add(element)
+		}
+		override fun addAll(c: Collection<T>): Boolean {
+				objectAdded += c.size
+				return innerSet.addAll(c)
+		}
+}
 fun main() {
 		val result = sum(ints)
 		println("sum result : " + result)
@@ -74,4 +87,7 @@ fun main() {
 		runJob()
 		testSuspendFunction()
 		testSuspendFunction2()
+		val cset = CountingSet<Int>()
+		cset.addAll(listOf(1,1,2))
+		println("${cset.objectAdded} objects added, ${cset.size} remain")
 }
