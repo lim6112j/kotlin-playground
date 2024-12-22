@@ -4,6 +4,7 @@
 package org.example
 
 import java.time.LocalDate
+import java.math.BigDecimal
 
 class App {
     val greeting: String
@@ -42,6 +43,13 @@ class CountingSet<T>(
 				return innerSet.addAll(c)
 		}
 }
+fun <T> copyElements(source: Collection<T>, target: MutableCollection<T> ){
+		for(item in source){
+				target.add(item)
+		}
+}
+operator fun BigDecimal.inc() = this + BigDecimal.ONE
+
 fun main() {
 		val result = sum(ints)
 		println("sum result : " + result)
@@ -90,4 +98,11 @@ fun main() {
 		val cset = CountingSet<Int>()
 		cset.addAll(listOf(1,1,2))
 		println("${cset.objectAdded} objects added, ${cset.size} remain")
+		val source: Collection<Int> = arrayListOf(3,5,7)
+		val target: MutableCollection<Int> = arrayListOf(1)
+		copyElements(source,target)
+		println(target)
+		var bd = BigDecimal.ZERO
+		println(bd++)
+		println(bd++)
 }
